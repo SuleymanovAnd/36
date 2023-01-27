@@ -11,7 +11,6 @@ ColorfulCircle::ColorfulCircle(QWidget *parent) {
     setGeometry(mRedCircle.rect());
     mCurrentCircle = mGreenCircle;
 
-
 };
 
 void ColorfulCircle::setYellow() {
@@ -27,4 +26,12 @@ void ColorfulCircle::setGreen(){
 void ColorfulCircle::setRed(){
     mCurrentCircle = mRedCircle;
     update();
+}
+
+void ColorfulCircle::paintEvent(QPaintEvent *e) {
+    QPainter p (this);
+    p.drawPixmap(e->rect(),mCurrentCircle);
+}
+QSize ColorfulCircle::minimumSizeHint () const {
+    return QSize(100,100);
 }

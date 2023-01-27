@@ -18,6 +18,7 @@ set (MY_DIRECTORY ${CMAKE_SOURCE_DIR}/include)
 
 set(SOURCE
         main.cpp
+        colorfulCircle.cpp
         )
 set(INCLUDE
         ${MY_DIRECTORY}/colorfulCircle.h
