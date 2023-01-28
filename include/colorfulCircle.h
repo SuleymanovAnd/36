@@ -5,18 +5,21 @@
 
 class ColorfulCircle : public QWidget {
     Q_OBJECT
-QPixmap mCurrentCircle;
-QPixmap mYellowCircle;
-QPixmap mGreenCircle;
-QPixmap mRedCircle;
-public:
 
+public:
+    ColorfulCircle() = default;
     ColorfulCircle (QWidget *parent);
+
+    void paintEvent (QPaintEvent *e) override;
+    QSize minimumSizeHint () const override;
+public slots:
     void setYellow ();
     void setGreen();
     void setRed();
-    void paintEvent (QPaintEvent *e);
-    QSize minimumSizeHint () const override;
 
-
+private :
+    QPixmap mCurrentCircle;
+    QPixmap mYellowCircle;
+    QPixmap mGreenCircle;
+    QPixmap mRedCircle;
 };
