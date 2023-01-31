@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22)
 
 set(CMAKE_PREFIX_PATH "D:/QtP/5.15.2/mingw81_64/lib/cmake")
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
@@ -19,12 +19,14 @@ set (MY_DIRECTORY ${CMAKE_SOURCE_DIR}/include)
 set(SOURCE
         main.cpp
         colorfulCircle.cpp
+        qtres.qrc
         )
 set(INCLUDE
         ${MY_DIRECTORY}/colorfulCircle.h
         ${MY_DIRECTORY}/
         ${MY_DIRECTORY}/
         )
+set(CMAKE_AUTORCC ON)
 
 
 add_executable(36 ${SOURCE} ${INCLUDE})

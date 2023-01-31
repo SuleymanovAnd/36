@@ -13,12 +13,13 @@ public:
     void paintEvent (QPaintEvent *e) override;
     QSize minimumSizeHint () const override;
 public slots:
+
     void setYellow ();
     void setGreen();
     void setRed();
 
 private :
-    QPixmap mCurrentCircle;
+    QPixmap *mCurrentCircle;
     QPixmap mYellowCircle;
     QPixmap mGreenCircle;
     QPixmap mRedCircle;

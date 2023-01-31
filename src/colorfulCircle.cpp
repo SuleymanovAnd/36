@@ -1,36 +1,43 @@
 #include "colorfulCircle.h"
+#include <QtCore>
+#include <QtGui>
 
-ColorfulCircle::ColorfulCircle(QWidget *parent) {
+ColorfulCircle::ColorfulCircle(QWidget *parent){
+    Q_INIT_RESOURCE(qtres);
     setParent (parent);
 
-    mYellowCircle = QPixmap("/YELLOW.png");
-    setGeometry(mYellowCircle.rect());
-    mGreenCircle = QPixmap ("/GREEN.png");
-    setGeometry(mGreenCircle.rect());
-    mRedCircle = QPixmap ("/RED.png");
-    setGeometry(mRedCircle.rect());
-    mCurrentCircle = mGreenCircle;
+    setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    mYellowCircle = QPixmap("://YELLOW.png");
 
+    mGreenCircle = QPixmap ("://GREEN.png");
+
+    mRedCircle = QPixmap ("://RED.png");
+
+    mCurrentCircle = &mGreenCircle;
+    setGeometry(mCurrentCircle->rect());
 };
 
+
+
+
 void ColorfulCircle::setYellow() {
-    mCurrentCircle = mYellowCircle;
+    mCurrentCircle = &mYellowCircle;
     update();
 }
 
 void ColorfulCircle::setGreen(){
-    mCurrentCircle = mGreenCircle;
+    mCurrentCircle = &mGreenCircle;
     update();
 }
 
 void ColorfulCircle::setRed(){
-    mCurrentCircle = mRedCircle;
+    mCurrentCircle = &mRedCircle;
     update();
 }
 
 void ColorfulCircle::paintEvent(QPaintEvent *e) {
     QPainter p (this);
-    p.drawPixmap(e->rect(),mCurrentCircle);
+    p.drawPixmap(e->rect(),*mCurrentCircle);
 }
 QSize ColorfulCircle::minimumSizeHint () const {
     return QSize(100,100);

@@ -18,6 +18,7 @@ int main(int argc, char *argv[]) {
 
     layout ->addWidget(circle);
     layout ->addWidget(slider);
+    window->setLayout(layout);
 
     QObject::connect (slider, &QSlider::valueChanged,[&slider,&circle](int newValue){
         if (newValue >=0 && newValue <33) {circle->setGreen();}
